@@ -2,7 +2,7 @@ import random
 import string
 
 
-def generate_key(key_len: int):
+def generate_random_key(key_len: int):
     return "".join(random.choice(string.ascii_letters) for _ in range(key_len))
 
 
