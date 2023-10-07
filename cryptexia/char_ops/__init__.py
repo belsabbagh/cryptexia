@@ -27,3 +27,30 @@ def int2char(index: int, alpha_sequence=None) -> str:
         alpha_sequence = ascii_uppercase
     """Converts an integer index in the alphabet sequence to a char."""
     return alpha_sequence[index]
+
+
+def ascii2char(char_code: int) -> str:
+    """Converts an ascii char code to a char."""
+    return chr(char_code)
+
+
+def add_chars(char1: str, char2: str, alpha_sequence=None) -> str:
+    if alpha_sequence is None:
+        alpha_sequence = ascii_uppercase
+    """Adds two chars in the alphabet sequence."""
+    return int2char(
+        (char2int(char1, alpha_sequence) + char2int(char2, alpha_sequence))
+        % len(alpha_sequence),
+        alpha_sequence,
+    )
+
+
+def sub_chars(char1: str, char2: str, alpha_sequence=None) -> str:
+    if alpha_sequence is None:
+        alpha_sequence = ascii_uppercase
+    """Subtracts two chars in the alphabet sequence."""
+    return int2char(
+        (char2int(char1, alpha_sequence) - char2int(char2, alpha_sequence))
+        % len(alpha_sequence),
+        alpha_sequence,
+    )

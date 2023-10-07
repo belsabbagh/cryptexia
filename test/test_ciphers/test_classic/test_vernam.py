@@ -1,13 +1,15 @@
 from cryptexia.ciphers.classic import Vernam
 
+message = "HELLO"
+key = "OCVHW"
+encrypted = "HGAEY"
+
 
 def test_encrypt():
-    vernam = Vernam("OCVHW")
-    data = "HELLO"
-    assert vernam.encrypt(data) == "OFJNRWCB"
+    vernam = Vernam(key)
+    assert vernam.encrypt(message) == encrypted
 
 
 def test_decrypt():
-    vernam = Vernam("OCVHW")
-    data = "JGEMY"
-    assert vernam.decrypt(data) == "HELLO"
+    vernam = Vernam(key)
+    assert vernam.decrypt(encrypted) == message
