@@ -1,5 +1,5 @@
 import numpy as np
-from ..__base import CipherBase
+from ..__base import CipherBase, dtype
 from ... import char_ops as co
 
 
@@ -67,13 +67,13 @@ class Hill(CipherBase):
     def __parse_csv(self, csv: str) -> list[list[int]]:
         return [[int(num) for num in row.split(",")] for row in csv.split("\n")]
 
-    def encrypt(self, data: str) -> str:
+    def encrypt(self, data: dtype) -> dtype:
         data = data.upper()
         while len(data) % len(self.key) != 0:
             data += "X"
         return process_data(data, np.array(self.key))
 
-    def decrypt(self, data: str) -> str:
+    def decrypt(self, data: dtype) -> dtype:
         data = data.upper()
         if len(data) % len(self.key) != 0:
             raise ValueError("Invalid cipher text.")

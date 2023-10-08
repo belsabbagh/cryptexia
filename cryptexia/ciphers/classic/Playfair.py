@@ -1,4 +1,4 @@
-from ..__base import CipherBase
+from ..__base import CipherBase, dtype
 from string import ascii_uppercase as ALPHABET
 
 
@@ -58,13 +58,13 @@ class Playfair(CipherBase):
             )
         return self.__get_char((x1, y2)) + self.__get_char((x2, y1))
 
-    def encrypt(self, data: str) -> str:
+    def encrypt(self, data: dtype) -> dtype:
         data = data.replace("J", "I")
         pairs = self.__make_pairs(data)
         enc_pairs = [self.__process_pair(pair) for pair in pairs]
         return "".join(enc_pairs)
 
-    def decrypt(self, data: str) -> str:
+    def decrypt(self, data: dtype) -> dtype:
         pairs = self.__make_pairs(data)
         dec_pairs = [self.__process_pair(pair, True) for pair in pairs]
         return "".join(dec_pairs)

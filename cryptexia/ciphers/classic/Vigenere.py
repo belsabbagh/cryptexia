@@ -1,4 +1,4 @@
-from ..__base import CipherBase
+from ..__base import CipherBase, dtype
 from typing import Literal
 from ... import char_ops as co
 from ...keygen import generate_repeating_key
@@ -21,12 +21,12 @@ class Vigenere(CipherBase):
             return key[:data_len]
         return generate_repeating_key(key, data_len)
 
-    def encrypt(self, data: str) -> str:
+    def encrypt(self, data: dtype) -> dtype:
         key = self.__make_key(data)
         cipher_text = [co.add_chars(data[i], key[i]) for i in range(len(data))]
         return "".join(cipher_text)
 
-    def decrypt(self, data: str) -> str:
+    def decrypt(self, data: dtype) -> dtype:
         key = self.__make_key(data)
         plain_text = [co.sub_chars(data[i], key[i]) for i in range(len(data))]
         return "".join(plain_text)

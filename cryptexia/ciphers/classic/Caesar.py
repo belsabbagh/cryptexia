@@ -1,4 +1,5 @@
-from ..__base import CipherBase
+from ..__base import CipherBase, dtype
+
 
 class Caesar(CipherBase):
     def __init__(self, key: int):
@@ -8,7 +9,7 @@ class Caesar(CipherBase):
         except ValueError:
             raise ValueError("Invalid key. Key must be an integer.")
 
-    def encrypt(self, data: str) -> str:
+    def encrypt(self, data: dtype) -> dtype:
         return "".join(
             chr((ord(c) + self.key - 65) % 26 + 65)
             if c.isupper()
@@ -18,7 +19,7 @@ class Caesar(CipherBase):
             for c in data
         )
 
-    def decrypt(self, data: str) -> str:
+    def decrypt(self, data: dtype) -> dtype:
         return "".join(
             chr((ord(c) - self.key - 65) % 26 + 65)
             if c.isupper()
