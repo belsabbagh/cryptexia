@@ -1,4 +1,5 @@
 from ..__base import CipherBase, dtype
+from ... import char_ops as co
 
 
 class Caesar(CipherBase):
@@ -11,20 +12,12 @@ class Caesar(CipherBase):
 
     def encrypt(self, data: dtype) -> dtype:
         return "".join(
-            chr((ord(c) + self.key - 65) % 26 + 65)
-            if c.isupper()
-            else chr((ord(c) + self.key - 97) % 26 + 97)
-            if c.islower()
-            else c
+            co.int2char(co.char2int(c) + self.key)
             for c in data
         )
 
     def decrypt(self, data: dtype) -> dtype:
         return "".join(
-            chr((ord(c) - self.key - 65) % 26 + 65)
-            if c.isupper()
-            else chr((ord(c) - self.key - 97) % 26 + 97)
-            if c.islower()
-            else c
+            co.int2char(co.char2int(c) - self.key)
             for c in data
         )
