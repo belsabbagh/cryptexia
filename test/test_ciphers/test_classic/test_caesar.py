@@ -3,11 +3,11 @@ from cryptexia.ciphers.classic import Caesar
 
 def test_encrypt():
     method = Caesar(3)
-    res = method.encrypt("abc")
-    assert res == "def"
+    res = method.encrypt("ABC")
+    assert res == "DEF"
 
 
 def test_decrypt():
     method = Caesar(3)
-    res = method.decrypt("def")
-    assert res == "abc"
+    res = method.decrypt("DEF")
+    assert res == "ABC"
