@@ -1,7 +1,7 @@
 from abc import abstractmethod
+from typing import TypeAlias
 
-
-dtype = [str, bytes]
+dtype: TypeAlias = str
 
 
 class CipherBase:
